@@ -1,0 +1,5 @@
+/node_modules/
+/.obsidian/
+/.vitepress/cache/
+/posts/.obsidian/
+/.vitepress/dist
