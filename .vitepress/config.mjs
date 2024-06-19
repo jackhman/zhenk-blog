@@ -40,6 +40,7 @@ export default defineConfig({
     themeConfig: {
         logo: '/logo/sloth64.png',
         outline: 'deep',
+		siteTitle: '博客',
         outlineTitle: '本页大纲',
         lastUpdated: {
             text: '更新于',
@@ -62,6 +63,10 @@ export default defineConfig({
         sidebar: {
             ...dataLoader.load().sirderBar
         },
+		footer: {
+			message: 'Released under the MIT License.',
+			copyright: 'Copyright © 2024-present Evan You'
+		},
         search: {
             //自定义扩展： https://docsearch.algolia.com/docs/legacy/behavior#queryhook
             provider: 'algolia',
