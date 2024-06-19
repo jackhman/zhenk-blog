@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:build": "node --max_old_space_size=8096 node_modules/vitepress/bin/vitepress.js build --mode production",
+    "docs:preview": "vitepress preview",
+	"fix-memory-limit": "cross-env LIMIT=8096 increase-memory-limit",
+    "limit": "cross-env LIMIT=8096 increase-memory-limit && node fix-memory-limit.config.cjs"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +18,9 @@
 	"@types/nprogress": "^0.2.1",
     "autoprefixer": "^10.4.16",
     "unplugin-auto-import": "^0.16.6",
-    "unplugin-vue-components": "^0.25.2"
+    "unplugin-vue-components": "^0.25.2",
+	"cross-env": "^7.0.3",
+    "increase-memory-limit": "^1.0.7",
   },
   "dependencies": {
     "confetti-js": "^0.0.18",
