@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "^1.2.3",
+    "vitepress": "1.2.2",
 	"@types/nprogress": "^0.2.1",
     "autoprefixer": "^10.4.16",
     "unplugin-auto-import": "^0.16.6",
