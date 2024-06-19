@@ -1,5 +1,5 @@
 {
-  "name": "testblog",
+  "name": "zhenk-blog",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "^1.2.3"
+    "vitepress": "^1.2.3",
+	"@types/nprogress": "^0.2.1",
+    "autoprefixer": "^10.4.16",
+    "cross-env": "^7.0.3",
+    "increase-memory-limit": "^1.0.7",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.2"
   }
 }
