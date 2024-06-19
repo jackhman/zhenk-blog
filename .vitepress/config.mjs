@@ -56,13 +56,6 @@ export default defineConfig({
             {text: '首页', link: '/'},
             {text: '文章', link: '/posts/'},
             {text: '阅读推荐', link: '/posts/recommend'},
-            {
-                text: '后端',
-                collapsed: true,
-                items: [
-                    { text: '极客时间', link: '/posts/backEnd/index' }
-                ]
-            },
 			{text: '前端', link: '/posts/frontEnd'},
 			{text: '运维', link: '/posts/devops'}
         ],
