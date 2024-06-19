@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev",
-    "docs:build": "node --max_old_space_size=5120 node_modules/vitepress/bin/vitepress.js build --mode production",
+    "docs:build": "node --max_old_space_size=6144 node_modules/vitepress/bin/vitepress.js build --mode production",
     "docs:preview": "vitepress preview",
-	"fix-memory-limit": "cross-env LIMIT=5120 increase-memory-limit",
-    "limit": "cross-env LIMIT=5120 increase-memory-limit && node fix-memory-limit.config.cjs"
+	"fix-memory-limit": "cross-env LIMIT=6144 increase-memory-limit",
+    "limit": "cross-env LIMIT=6144 increase-memory-limit && node fix-memory-limit.config.cjs"
   },
   "author": "",
   "license": "ISC",
