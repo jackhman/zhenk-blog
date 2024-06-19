@@ -20,7 +20,7 @@
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.2",
 	"cross-env": "^7.0.3",
-    "increase-memory-limit": "^1.0.7",
+    "increase-memory-limit": "^1.0.7"
   },
   "dependencies": {
     "confetti-js": "^0.0.18",
