@@ -19,5 +19,15 @@
     "increase-memory-limit": "^1.0.7",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.2"
+  },
+  "dependencies": {
+    "confetti-js": "^0.0.18",
+    "element-plus": "^2.3.14",
+    "markdown-it-title": "^4.0.0",
+    "nprogress": "^0.2.0",
+    "query-string": "^8.1.0",
+    "unplugin-element-plus": "^0.8.0",
+    "url-parse": "^1.5.10",
+    "vue": "^3.3.4"
   }
 }
