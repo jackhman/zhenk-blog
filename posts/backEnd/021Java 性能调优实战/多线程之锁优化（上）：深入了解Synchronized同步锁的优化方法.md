@@ -16,6 +16,7 @@ Lock 同步锁是基于 Java 实现的，而 Synchronized 是基于底层操作�
 
 通常 Synchronized 实现同步锁的方式有两种，一种是修饰方法，一种是修饰方法块。以下就是通过 Synchronized 实现的两种同步方法加锁的方式：
 
+```java
 // 关键字在实例方法上，锁为当前实例
 
 public synchronized void method1() {
@@ -37,15 +38,18 @@ synchronized (o) {
 }
 
 }
+```
 
 下面我们可以通过反编译看下具体字节码的实现，运行以下反编译命令，就可以输出我们想要的字节码：
-
+```shell
 javac -encoding UTF-8 SyncTest.java //先运行编译class文件命令
 
 javap -v SyncTest.class //再通过javap打印出字节文件
+```
 
 通过输出的字节码，你会发现：Synchronized 在修饰同步代码块时，是由 monitorenter 和 monitorexit 指令来实现同步的。进入 monitorenter 指令后，线程将持有 Monitor 对象，退出 monitorenter 指令后，线程将释放该 Monitor 对象。
 
+```java
 public void method2();
 
 descriptor: ()V
@@ -121,11 +125,13 @@ stack = [ class java/lang/Throwable ]
 frame_type = 250 /* chop */
 
 offset_delta = 4
+```
 
 再来看以下同步方法的字节码，你会发现：当 Synchronized 修饰同步方法时，并没有发现 monitorenter 和 monitorexit 指令，而是出现了一个 ACC_SYNCHRONIZED 标志。
 
 这是因为 JVM 使用了 ACC_SYNCHRONIZED 访问标志来区分一个方法是否是同步方法。当方法调用时，调用指令将会检查该方法是否被设置 ACC_SYNCHRONIZED 访问标志。如果设置了该标志，执行线程将先持有 Monitor 对象，然后再执行方法。在该方法运行期间，其它线程将无法获取到该 Mointor 对象，当方法执行完成后，再释放该 Monitor 对象。
 
+```java
 public synchronized void method1();
 
 descriptor: ()V
@@ -141,11 +147,12 @@ stack=0, locals=1, args_size=1
 LineNumberTable:
 
 line 8: 0
+```
 
 通过以上的源码，我们再来看看 Synchronized 修饰方法是怎么实现锁原理的。
 
 JVM 中的同步是基于进入和退出管程（Monitor）对象实现的。每个对象实例都会有一个 Monitor，Monitor 可以和对象一起创建、销毁。Monitor 是由 ObjectMonitor 实现，而 ObjectMonitor 是由 C++ 的 ObjectMonitor.hpp 文件实现，如下所示：
-
+```c++
 ObjectMonitor() {
 
 _header = NULL;
@@ -181,6 +188,7 @@ _SpinClock = 0 ;
 OwnerIsThread = 0 ;
 
 }
+```
 
 当多个线程同时访问一段同步代码时，多个线程会先被存放在 ContentionList 和 _EntryList 集合中，处于 block 状态的线程，都会被加入到该列表。接下来当线程获取到对象的 Monitor 时，Monitor 是依靠底层操作系统的 Mutex Lock 来实现互斥的，线程申请 Mutex 成功，则持有该 Mutex，其它线程将无法获取到该 Mutex，竞争失败的线程会再次进入 ContentionList 被挂起。
 
